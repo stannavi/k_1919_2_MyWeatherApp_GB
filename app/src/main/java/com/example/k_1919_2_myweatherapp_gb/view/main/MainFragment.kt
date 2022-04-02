@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.k_1919_2_myweatherapp_gb.R
 import com.example.k_1919_2_myweatherapp_gb.databinding.MainFragmentBinding
+import com.example.k_1919_2_myweatherapp_gb.viewmodel.AppState
 import com.example.k_1919_2_myweatherapp_gb.viewmodel.MainViewModel
 
 
@@ -35,23 +36,36 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnOne.setOnClickListener { }
+        //binding.btnOne.setOnClickListener { }
         // view.findViewById<TextView>(R.id.btnOne).setOnClickListener { }
         // view.findViewById<Button>(R.id.btnOne).setOnClickListener { }
 
         val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        val observer = object : Observer<Any> {
-            override fun onChanged(data: Any) {
+        //val observer = Object<Any>{renderData(it)}
+        val observer = object:Observer <AppState> {
+            override fun onChanged(data: AppState) {
                 renderData(data)
             }
         }
-        viewModel.getData().observe(viewLifecycleOwner, observer)
-
+        //viewModel.getData().observe(viewLifecycleOwner, observer)
         viewModel.getWeather()
     }
 
-    private fun renderData(data: Any) {
-        Toast.makeText(requireContext(), "РАБОТАЕТ", Toast.LENGTH_SHORT).show()
+    private fun renderData(data: AppState) {
+        when(data) {
+            is AppState.Error -> {
+                binding.loadingLayout.visibility = View.GONE
+                binding.message.text = "Не получилось"//${ data.error }
+            }
+            is AppState.Loading -> {
+                binding.loadingLayout.visibility = View.VISIBLE
+            }
+            is AppState.Success -> {
+                binding.loadingLayout.visibility = View.GONE
+                binding.message.text = "Получилось"
+                //Toast.makeText(requireContext(), "РАБОТАЕТ", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     companion object {
