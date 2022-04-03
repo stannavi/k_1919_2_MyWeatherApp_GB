@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.k_1919_2_myweatherapp_gb.repository.Repository
 import com.example.k_1919_2_myweatherapp_gb.repository.RepositoryImpl
-import java.lang.Thread.sleep
 
 class MainViewModel(
     private val liveData: MutableLiveData<AppState> = MutableLiveData(),
@@ -25,8 +24,7 @@ class MainViewModel(
                 val answer = repository.getWeatherFromServer()
                 //val answer = if(узнать локально или сервер) repository.getWeatherFromServer() else getWeatherFromLocalStorage()
                 liveData.postValue(AppState.Success(answer))
-            }
-            else
+            } else
                 liveData.postValue(AppState.Error(IllegalAccessException()))
         }.start()
     }

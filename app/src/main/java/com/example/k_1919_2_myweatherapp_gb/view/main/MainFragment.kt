@@ -1,17 +1,12 @@
 package com.example.k_1919_2_myweatherapp_gb.view.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.TextView
-import android.widget.Toast
-import androidx.lifecycle.LiveData
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.k_1919_2_myweatherapp_gb.R
 import com.example.k_1919_2_myweatherapp_gb.databinding.MainFragmentBinding
 import com.example.k_1919_2_myweatherapp_gb.viewmodel.AppState
 import com.example.k_1919_2_myweatherapp_gb.viewmodel.MainViewModel
@@ -32,19 +27,13 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = MainFragmentBinding.inflate(inflater, container, false)
-        // return inflater.inflate(R.layout.main_fragment, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //binding.btnOne.setOnClickListener { }
-        // view.findViewById<TextView>(R.id.btnOne).setOnClickListener { }
-        // view.findViewById<Button>(R.id.btnOne).setOnClickListener { }
-
         val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        //val observer = Object<Any>{renderData(it)}
         val observer = object : Observer<AppState> {
             override fun onChanged(data: AppState) {
                 renderData(data)
@@ -72,7 +61,6 @@ class MainFragment : Fragment() {
                 binding.cityCoordinates.text =
                     "${data.weatherData.city.lat} ${data.weatherData.city.lon}"
                 Snackbar.make(binding.mainView, "Получилось", Snackbar.LENGTH_LONG).show()
-                //Toast.makeText(requireContext(), "РАБОТАЕТ", Toast.LENGTH_SHORT).show()
             }
         }
     }
