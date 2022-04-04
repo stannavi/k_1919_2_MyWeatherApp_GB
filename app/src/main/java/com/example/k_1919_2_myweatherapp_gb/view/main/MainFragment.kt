@@ -20,6 +20,7 @@ class MainFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         //binding = null
+        //урок 3 старт
     }
 
     override fun onCreateView(
