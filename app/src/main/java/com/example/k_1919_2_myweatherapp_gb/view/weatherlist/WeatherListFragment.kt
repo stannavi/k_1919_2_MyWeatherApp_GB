@@ -52,7 +52,7 @@ class WeatherListFragment : Fragment(), OnItemListClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.recyclerView.apply {// TODO вынести в initRecycler
+        binding.recyclerView.apply {
             this.adapter = this@WeatherListFragment.adapter
             layoutManager = LinearLayoutManager(requireContext())
         }
