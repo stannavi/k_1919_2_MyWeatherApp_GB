@@ -9,6 +9,7 @@ import com.example.k_1919_2_myweatherapp_gb.databinding.FragmentDetailsBinding
 import com.example.k_1919_2_myweatherapp_gb.repository.Weather
 import com.example.k_1919_2_myweatherapp_gb.utils.KEY_BUNDLE_WEATHER
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_details.*
 
 
 class DetailsFragment : Fragment() {
@@ -28,7 +29,7 @@ class DetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -36,20 +37,25 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val weather:Weather = requireArguments().getParcelable<Weather>(KEY_BUNDLE_WEATHER)!!
-        renderData(weather)
-
+        arguments?.getParcelable<Weather>(KEY_BUNDLE_WEATHER)?.let {
+            renderData(it)
+        }
     }
 
     private fun renderData(weather: Weather) {
-        binding.loadingLayout.visibility = View.GONE
-        binding.cityName.text = weather.city.name.toString()
-        binding.temperatureValue.text = weather.temperature.toString()
-        binding.feelsLikeValue.text = weather.feelslike.toString()
-        binding.cityCoordinates.text =
-            "${weather.city.lat} ${weather.city.lon}"
-        Snackbar.make(binding.mainView, "Получилось", Snackbar.LENGTH_LONG).show()
+        with(binding) {
+            loadingLayout.visibility = View.GONE
+            cityName.text = weather.city.name.toString()
+            temperatureValue.text = weather.temperature.toString()
+            feelsLikeValue.text = weather.feelslike.toString()
+            cityCoordinates.text = "${weather.city.lat} ${weather.city.lon}"
+        }
+        mainView.showSnackBar()
      }
+
+    fun View.showSnackBar() {
+        Snackbar.make(binding.mainView, "Получилось", Snackbar.LENGTH_LONG).show()
+    }
 
     companion object {
         @JvmStatic
