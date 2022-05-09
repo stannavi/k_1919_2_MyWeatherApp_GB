@@ -1,13 +1,13 @@
 package com.example.k_1919_2_myweatherapp_gb.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
-import androidx.fragment.app.Fragment
+import com.example.k_1919_2_myweatherapp_gb.Lesson6.MainService
 import com.example.k_1919_2_myweatherapp_gb.R
-import com.example.k_1919_2_myweatherapp_gb.view.details.ThreadsLesson6.ThreadsFragment
+import com.example.k_1919_2_myweatherapp_gb.Lesson6.ThreadsFragment
 import com.example.k_1919_2_myweatherapp_gb.view.weatherlist.WeatherListFragment
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, WeatherListFragment.newInstance()).commit()
         }
+
+        startService(Intent(this, MainService::class.java))
     }
 
     //lesson 6

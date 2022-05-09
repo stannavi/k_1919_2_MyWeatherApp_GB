@@ -1,4 +1,4 @@
-package com.example.k_1919_2_myweatherapp_gb.view.details.ThreadsLesson6
+package com.example.k_1919_2_myweatherapp_gb.Lesson6
 
 import android.os.Bundle
 import android.os.Handler
@@ -7,21 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.k_1919_2_myweatherapp_gb.R
 import com.example.k_1919_2_myweatherapp_gb.databinding.FragmentThreadsBinding
-import com.example.k_1919_2_myweatherapp_gb.databinding.FragmentWeatherListBinding
-import com.example.k_1919_2_myweatherapp_gb.repository.Weather
-import com.example.k_1919_2_myweatherapp_gb.utils.KEY_BUNDLE_WEATHER
-import com.example.k_1919_2_myweatherapp_gb.view.details.DetailsFragment
-import com.example.k_1919_2_myweatherapp_gb.view.weatherlist.OnItemListClickListener
-import com.example.k_1919_2_myweatherapp_gb.viewmodel.AppState
-import com.example.k_1919_2_myweatherapp_gb.viewmodel.MainViewModel
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_threads.*
 import java.lang.Thread.sleep
 
 
