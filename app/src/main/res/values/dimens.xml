@@ -4,6 +4,7 @@
     <dimen name="margin_15_dp">15dp</dimen>
     <dimen name="temperature_value_text_size">40sp</dimen>
     <dimen name="feels_like_text_size">30sp</dimen>
+    <dimen name="calculate_text_size">20sp</dimen>
     <dimen name="textSize">35sp</dimen>
     <dimen name="marginTop">5dp</dimen>
     <dimen name="maximageSize">56dp</dimen>

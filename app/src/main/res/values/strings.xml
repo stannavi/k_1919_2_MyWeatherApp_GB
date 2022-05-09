@@ -9,5 +9,8 @@
     <string name="Moscow">Москва</string>
     <string name="lt_ln">lt/ln: 55.755826, 37.617299900000035</string>
     <string name="temperature">+15</string>
+    <string name="calculate">calculate</string>
+    <string name="default_number">3</string>
+    <string name="threads">Threads</string>
 
 </resources>
