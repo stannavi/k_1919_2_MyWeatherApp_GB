@@ -10,7 +10,7 @@ class MyBroadcastReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         intent?. let {
             val extra = it.getStringExtra(KEY_BUNDLE_SERVICE_MESSAGE)
-            Log.d("@@@", "MyBroadcastReceiver on Receive $extra")
+            Log.d("@@@", "MyBroadcastReceiver on Receive ${intent!!.action}")
         }
     }
 }
